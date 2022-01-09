@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>POP</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css" integrity="sha512-Cv93isQdFwaKBV+Z4X8kaVBYWHST58Xb/jVOcV9aRsGSArZsgAnFIhMpDoMDcFNoUtday1hdjn0nGp3+KZyyFw==" crossorigin="anonymous" referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <style>
+        body {
+            margin: 0%;
+            padding: 0%;
+            background: linear-gradient(to right, #000000, #696969);
+            overflow-y: hidden;
+            font-family: Nunito, sans-serif;
+        }
+        
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        h1 {
+            font-size: 6.5em;
+            margin: 1% 0% -5% 0%;
+            font-family: Nunito, sans-serif;
+            -webkit-text-stroke: 2px black;
+            color: white;
+        }
+        
+        #score {
+            font-size: 4em;
+            font-family: Nunito, sans-serif;
+            -webkit-text-stroke: 2px black;
+            color: white;
+            margin-bottom: 2%;
+        }
+        
+        input {
+            position: absolute;
+            opacity: 0;
+            z-index: -1;
+        }
+    </style>
+</head>
+
+<body onload="startCount()">
+    <div class="container">
+        <h1>POP-ANGEL:)</h1>                                              
+        <p id="score" height="600px">0</p><img src="https://static.wixstatic.com/media/c6282d_b97fe4991e914a92886e1367111039b0~mv2.jpg" alt="Invalid" id="mhk" height="400px"></div>
+</body>
+
+</html>
+<script>
+    var img = document.getElementById("mhk");
+    var count = document.getElementById("score");
+    var score = 0;
+    var audio = new Audio('pop.mp3');
+    img.addEventListener("mousedown", function() {
+            increaseScore();
+            img.src = 'https://static.wixstatic.com/media/c6282d_4465df2deea34ac39ff032daa110806e~mv2.jpg';
+            audio.play();
+        }
+
+    );
+    img.addEventListener("mouseup", function() {
+            img.src = 'https://static.wixstatic.com/media/c6282d_b97fe4991e914a92886e1367111039b0~mv2.jpg';
+            audio.play();
+        }
+
+    );
+
+    function increaseScore() {
+        score++;
+        count.innerHTML = score;
+    }
+</script>
