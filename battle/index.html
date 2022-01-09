@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+
+    <div id="container">
+        <div id="topRow">
+            <div id="megaStats" class="stats">
+                <span class="healthLabel">HEALTH</span><br>
+                <div class="hpBorder">
+                    <div id="megaHP" class="hpBar"></div>
+                </div>
+                <p id="megaMoves">
+                    <span class="healthLabel">MOVES</span><br>
+                    <button onclick="attack()" class="buttonStyle">ATTACK</button>
+                </p>
+                <p id="speMoves">
+                    <button onclick="special()" class="buttonSpecial">SPECIAL</button>
+                </p>
+
+            </div>
+            <div id="megaman" class="chars">
+                <img src="https://static.wixstatic.com/media/c6282d_587f77b2cb044ac588516b8229f08cc3~mv2.png" id="mega">
+            </div>
+            <div id="veigar" class="chars">
+                <img src="https://static.wixstatic.com/media/c6282d_9dd70c90324f41b99060bc5431936b2e~mv2.png">
+            </div>
+            <div id="veigStats" class="stats">
+                <span class="healthLabel">HEALTH</span><br>
+                <div class="hpBorder">
+                    <div id="veigHP" class="hpBar"></div>
+                </div>
+            </div>
+        </div>
+        <div id="bottomRow">
+            <h1>Welcome to the Battle Arena!</h1>
+            <p>Megaman facing off against Veigar!</p>
+            <button onclick="beginBattle()" class="buttonStyle">BEGIN BATTLE!</button>
+        </div>
+    </div>
+    <script type="text/javascript" src="script.js"></script>
+</body>
+
+</html>
