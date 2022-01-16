@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Vue IF FOR</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="assets/js/script.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <div class="container mt-5 mb-5 d-flex justify-content-center">
+            <div class="card px-1 py-4">
+                <form class="card-body">
+                    <div class="row">
+                        <div class="col-2 mb-3 mt-3">
+                            <label for="id" class="form-label">รหัสนักศึกษา:</label>
+                            <input type="text" class="form-control" id="id" placeholder="Enter รหัสนักศึกษา" name="id" v-model="student.id" required>
+
+                        </div>
+
+                        <div class="col-5 mb-3 mt-3">
+                            <label for="name" class="form-label">ชื่อ:</label>
+                            <input type="text" class="form-control" id="name" placeholder="Enter ชื่อ" name="name" v-model="student.name" required>
+
+                        </div>
+
+                        <div class="col-5 mb-3 mt-3">
+                            <label for="lname" class="form-label ">นามสกุล:</label>
+                            <input type="text" class="form-control" id="lname" placeholder="Enter นามสกุล" name="lname" v-model="student.lname" required>
+
+                        </div>
+                        <div class="form-group col-7 mb-3 mt-2">
+                            <label for="email " class="form-label">E-Mail:</label>
+                            <div class="input-group">
+                                <input type="email" class="form-control" id="em" placeholder="Enter e-mail" name="em" v-model="student.email" required>
+                                <span class="input-group-text ">@email.com</span>
+                            </div>
+
+                        </div>
+
+                        <div class="col-auto mb-3 mt-2">
+                            <label for="gpa" class="form-label">GPA:</label>
+                            <input type="text" class="form-control" id="gpa" placeholder="Enter gpa" name="gpa" v-model="student.gpa" required>
+                        </div>
+                    </div>
+                    <div class="text-center col">
+                        <button type="submit" class="btn btn-primary btn-lg" @click="pushstudent(student)">SAVE</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="container-fluid">
+            <table class="table">
+                <tr>
+                    <th>รหัสนักศึกษา</th>
+                    <th>ชื่อ</th>
+                    <th>นามสกุล</th>
+                    <th>E-Mail</th>
+                    <th>GPA</th>
+                    <th></th>
+                </tr>
+
+                <tbody>
+                    <tr v-for="(stu,index) in studentList ">
+                        <td v-if="stu.gpa < 2.00" style="color: red; font-weight: bold;">{{stu.id}}</td>
+                        <td v-if="stu.gpa < 2.00" style="color: red; font-weight: bold;">{{stu.name}}</td>
+                        <td v-if="stu.gpa < 2.00" style="color: red; font-weight: bold;">{{stu.lname}}</td>
+                        <td v-if="stu.gpa < 2.00" style="color: red; font-weight: bold;">{{stu.email}}</td>
+                        <td v-if="stu.gpa < 2.00" style="color: red; font-weight: bold;">{{stu.gpa}}</td>
+
+                        <td v-if="stu.gpa >= 2.00 && stu.gpa <= 4.00">{{stu.id}}</td>
+                        <td v-if="stu.gpa >= 2.00 && stu.gpa <= 4.00">{{stu.name}}</td>
+                        <td v-if="stu.gpa >= 2.00 && stu.gpa <= 4.00">{{stu.lname}}</td>
+                        <td v-if="stu.gpa >= 2.00 && stu.gpa <= 4.00">{{stu.email}}</td>
+                        <td v-if="stu.gpa >= 2.00 && stu.gpa <= 4.00">{{stu.gpa}}</td>
+                        <td> <button type="button" class="btn btn-danger btn-sm" @click="deletestudent(index)">DELETE</button> </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+
+</html>
+<script>
+    varapp = new Vue({
+        el: "#app ",
+        data: {
+            student: {},
+            studentList: [],
+        },
+        methods: {
+
+            pushstudent: function(stu) {
+                this.studentList.push(stu)
+                this.student = {}
+            },
+            deletestudent(index) {
+                this.studentList.splice(index, 1);
+            }
+        }
+    })
+    $(document).ready(function() {
+        $('#gpa').mask('0.00');
+        $('#id').mask('0000000000');
+    })
+</script>
